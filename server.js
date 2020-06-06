@@ -40,7 +40,9 @@ const handleName = (req, res) => {
   );
   console.log(userCheck);
 
-  userCheck != undefined ? res.redirect(`/users/${userCheck._id}`) : "";
+  userCheck != undefined
+    ? res.status(200).redirect(`/users/${userCheck._id}`)
+    : res.status(404).redirect("back");
 };
 // -----------------------------------------------------
 // server endpoints
