@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<div class="profile-page">
+  <%= user.name %>
+</div>
+<div>
+  <h3><%= user.name %>'s Friends</h3>
+  <ul class="homepage__all">
+    <% friends.forEach(user => { %>
+    <li class="homepage__all--user">
+      <img src="<%= user.avatarUrl %>" />
+    </li>
+    <% }) %>
+  </ul>
+</div>
+<%- include('../partials/footer') %>
