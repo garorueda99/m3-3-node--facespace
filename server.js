@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const status = {
   text: "Sign In",
   path: "/signin",
+  logged: false,
 };
 const { users } = require("./data/users");
 
@@ -29,8 +30,6 @@ const userPage = (req, res) => {
     const friends = users.filter((element) =>
       element.friends.includes(user_ID)
     );
-    status.path = `/users/${user_ID}`;
-    status.text = `Howdy, ${user.name}`;
     res.render("pages/profile", { user, friends, status });
   } else {
     res.render("pages/fourOhFour", {
@@ -39,13 +38,17 @@ const userPage = (req, res) => {
     });
   }
 };
-const login = (req, res) =>
-  res.status(200).render("pages/signin", { users, status });
+const login = (req, res) => {
+  if (status.path === "/signin") {
+    res.status(200).render("pages/signin", { users, status });
+  } else {
+    res.status(404).redirect("back");
+  }
+};
 const handleName = (req, res) => {
   const userCheck = users.find(
     (element) => element.name === req.query.firstName
   );
-  console.log(userCheck);
 
   userCheck != undefined
     ? res.status(200).redirect(`/users/${userCheck._id}`)
