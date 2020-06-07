@@ -2,19 +2,23 @@
 
 const express = require("express");
 const morgan = require("morgan");
-
+const status = {
+  text: "Sign In",
+  path: "/signin",
+};
 const { users } = require("./data/users");
 
 let currentUser = {};
 
-const home = (req, res) => res.status(200).render("pages/homepage", { users });
+const home = (req, res) =>
+  res.status(200).render("pages/homepage", { users, status });
 // declare the 404 function
 const handleFourOhFour = (req, res) => {
   res.status(404).send("I couldn't find what you're looking for.");
 };
 const userPage = (req, res) => {
   const user_ID = req.params.userID;
-  console.log(user_ID);
+  // console.log(user_ID);
   if (
     true
     // parseInt(path[0]) >= 100 &&
@@ -25,7 +29,9 @@ const userPage = (req, res) => {
     const friends = users.filter((element) =>
       element.friends.includes(user_ID)
     );
-    res.render("pages/profile", { user, friends });
+    status.path = `/users/${user_ID}`;
+    status.text = `Howdy, ${user.name}`;
+    res.render("pages/profile", { user, friends, status });
   } else {
     res.render("pages/fourOhFour", {
       title: "I got nothing",
@@ -33,7 +39,8 @@ const userPage = (req, res) => {
     });
   }
 };
-const login = (req, res) => res.status(200).render("pages/signin", { users });
+const login = (req, res) =>
+  res.status(200).render("pages/signin", { users, status });
 const handleName = (req, res) => {
   const userCheck = users.find(
     (element) => element.name === req.query.firstName
