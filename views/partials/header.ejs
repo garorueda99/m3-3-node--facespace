@@ -8,11 +8,10 @@
   <body>
     <header class="header">
       <h1 class='site-title'>Facespace</h1>
-      <%console.log("Hi", currentUser.userinfo)%>
-      <% if (currentUser.userinfo === undefined) { %>
+      <% if (currentUser === undefined) { %>
         <a id = "sign" href="/signin">Sign In</a> 
       <%} else {%>
-        <p id = "sign">Howdy, <%=currentUser.userinfo.name%></a> 
+        <p id = "sign">Howdy, <%=currentUser.name%></a> 
       <%}%>
     </header>
     <script src = "/js/header.js"></script>

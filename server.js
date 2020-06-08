@@ -4,10 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 const { users } = require('./data/users');
 
-let currentUser = {
-  userinfo: undefined,
-  friends: {},
-};
+let currentUser = undefined;
 
 const home = (req, res) =>
   res.status(200).render('pages/homepage', { users, currentUser });
@@ -37,7 +34,7 @@ const profilePage = (req, res) => {
   }
 };
 const login = (req, res) => {
-  if (currentUser.userinfo === undefined) {
+  if (currentUser === undefined) {
     res.status(200).render('pages/signin', { users, currentUser });
   } else {
     res.status(404).redirect('back');
@@ -45,12 +42,9 @@ const login = (req, res) => {
 };
 
 const handleName = (req, res) => {
-  currentUser.userinfo = users.find(
-    (element) => element.name === req.query.firstName
-  );
-
-  currentUser.userinfo != undefined
-    ? res.status(200).redirect(`/users/${currentUser.userinfo._id}`)
+  currentUser = users.find((element) => element.name === req.query.firstName);
+  currentUser != undefined
+    ? res.status(200).redirect(`/users/${currentUser._id}`)
     : res.status(404).redirect('back');
 };
 // -----------------------------------------------------
