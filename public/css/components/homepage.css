@@ -8,8 +8,27 @@
   flex-wrap: wrap;
 }
 .homepage__all--user {
+  z-index: 100;
+}
+
+.overflow {
+  overflow: hidden;
+  position: relative;
   margin: 0 4px;
 }
+
 .homepage__all--user img {
   width: 120px;
+}
+
+.friendframe::before {
+  content: 'Friend';
+  position: absolute;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 3px;
+  transform: translate(35px, 10px) rotate(45deg);
+  width: 120px;
+  font-size: medium;
+  text-align: center;
 }

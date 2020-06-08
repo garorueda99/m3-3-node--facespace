@@ -4,18 +4,20 @@
   <!-- content here -->
   <ul class="homepage__all">
     <% users.forEach(profile => { %>
-      <li class="homepage__all--user">
-        <% if (currentUser != undefined) {%>
-          <%console.log(profile._id, currentUser)%>
-          <% if (currentUser.friends.includes(profile._id)) {%>
-            <a class = "friendframe" href="users/<%=profile._id%>"><img src="<%= profile.avatarUrl %>" /></a>
+      <div class = "overflow">
+        <li class="homepage__all--user">
+          <% if (currentUser != undefined) {%>
+            <%console.log(profile._id, currentUser)%>
+            <% if (currentUser.friends.includes(profile._id)) {%>
+              <a class = "friendframe" href="users/<%=profile._id%>"><img src="<%= profile.avatarUrl %>" /></a>
+            <%} else {%>
+              <a href ="users/<%=profile._id%>"><img src="<%= profile.avatarUrl %>" /></a>
+            <%}%>
           <%} else {%>
-            <a class = href="users/<%=profile._id%>"><img src="<%= profile.avatarUrl %>" /></a>
+            <a href="users/<%=profile._id%>"><img src="<%= profile.avatarUrl %>" /></a>
           <%}%>
-        <%} else {%>
-          <a href="users/<%=profile._id%>"><img src="<%= profile.avatarUrl %>" /></a>
-        <%}%>
-      </li>
+        </li>
+      </div>
     <% }) %>
   </ul>
 </div>
