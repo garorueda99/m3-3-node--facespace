@@ -133,3 +133,9 @@ ol,
 ul {
   margin-bottom: 1em;
 }
+
+a {
+  line-height: 0;
+  font-size: 0;
+  font-weight: 0;
+}
