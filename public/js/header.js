@@ -1,4 +1,4 @@
-const sign = document.body.querySelector("#signin");
-if (window.location.pathname === "/signin") {
+const sign = document.body.querySelector('#sign');
+if (window.location.pathname === '/signin') {
   sign.parentNode.removeChild(sign);
 }
