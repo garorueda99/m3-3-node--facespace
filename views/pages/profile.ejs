@@ -10,11 +10,16 @@
     <ul class="profile-page__friends--list">
       <% friends.forEach(element => { %>
       <li class="friend">
-        <img src="<%=element.avatarUrl%>" alt="<%=element.name%>'s image"/>
-        <p><%=element.name%></p>
+        <%console.log(element._id)%>
+        <img data-id="<%=element._id%>" src="<%=element.avatarUrl%>" alt="<%=element.name%>'s image"/>
+        <ul>
+          <li class = "mainMenu"><%=element.name%></li>
+        </ul>
       </li>
       <% }) %>
     </ul>
   </div>
 </div>
-<%- include('../partials/footer') %>
+<script src = "/js/profilemenu.js"></script>
+
+

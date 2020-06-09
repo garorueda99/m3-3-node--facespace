@@ -20,7 +20,7 @@ const profilePage = (req, res) => {
     const friends = users.filter((element) =>
       element.friends.includes(user_ID)
     );
-    res.render("pages/profile", { profile, friends, currentUser });
+    res.render("pages/profile", { profile, friends, currentUser, users });
   } else {
     res.status(404).send("I couldn't find what you're looking for.");
   }
@@ -39,6 +39,10 @@ const handleName = (req, res) => {
     ? res.status(200).redirect(`/users/${currentUser._id}`)
     : res.status(404).redirect("back");
 };
+
+const handleRemoveFriend = (req, res) => {
+  console.log(req.query);
+};
 // -----------------------------------------------------
 // server endpoints
 express()
@@ -52,6 +56,7 @@ express()
   .get("/signin", login)
   .get("/users/:userID", profilePage)
   .get("/getname", handleName)
+  .get("/removefriend", handleRemoveFriend)
 
   // a catchall endpoint that will send the 404 message.
   .get("*", handleFourOhFour)

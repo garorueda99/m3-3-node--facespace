@@ -35,15 +35,19 @@
   border: 2px solid var(--primary-color);
   width: 100%;
 }
-.friend p {
+.mainMenu {
   background: rgba(255, 255, 255, 0.6);
   color: #000;
   position: absolute;
-  bottom: 9px;
+  bottom: 26px;
   left: 2px;
   text-align: center;
   font-weight: 700;
   width: calc(100% - 4px);
+}
+
+.friend .mainMenu:hover {
+  background: rgba(255, 255, 255, 1);
 }
 
 @media screen and (min-width: 600px) {
