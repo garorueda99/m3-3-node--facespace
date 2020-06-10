@@ -10,7 +10,6 @@
     <ul class="profile-page__friends--list">
       <% friends.forEach(element => { %>
       <li class="friend">
-        <%console.log(element._id)%>
         <img src="<%=element.avatarUrl%>" alt="<%=element.name%>'s image"/>
         <h3 class = "mainMenu" data-id="<%=element._id%>" data-user="<%=profile._id%>" ><%=element.name%></h3>
       </li>
@@ -18,6 +17,9 @@
     </ul>
   </div>
 </div>
-<script src = "/js/profilemenu.js"></script>
-
+<%if(currentUser != undefined) {%>
+  <%if(currentUser._id === profile._id) {%>
+    <script src = "/js/profilemenu.js"></script>
+  <%}%>
+<%}%>
 

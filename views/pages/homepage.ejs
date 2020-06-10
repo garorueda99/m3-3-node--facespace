@@ -7,7 +7,6 @@
         <div class = "overflow">
           <li class="homepage__all--user">
             <% if (currentUser != undefined) {%>
-              <%console.log(profile._id, currentUser)%>
               <% if (currentUser.friends.includes(profile._id)) {%>
                 <a class = "friendframe" href="users/<%=profile._id%>"><img src="<%= profile.avatarUrl %>" /></a>
               <%} else {%>
