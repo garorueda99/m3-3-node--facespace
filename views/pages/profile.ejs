@@ -3,7 +3,12 @@
   <div class = "profile-page--banner"></div>
   <div class = "profile-page__user">
     <img class = "profile-page__user--avatar" src="<%=profile.avatarUrl%>" alt="<%=profile.name%>'s image" />
-    <h2><%=profile.name%></h2>
+    <div>
+      <h2 data-profile = <%=profile._id%> id="profile"><%=profile.name%></h2>
+      <%if(currentUser != undefined && currentUser._id != profile._id && !currentUser.friends.includes(profile._id)) {%>
+        <button>Request friendship</button>
+      <%}%>
+  </div>
   </div>
   <div class="profile-page__friends">
     <h3><%= profile.name %>'s Friends</h3>
@@ -18,8 +23,12 @@
   </div>
 </div>
 <%if(currentUser != undefined) {%>
-  <%if(currentUser._id === profile._id) {%>
+  <%if(currentUser._id === profile._id){%>
     <script src = "/js/profilemenu.js"></script>
+  <%} else{%>
+    <%if(!currentUser.friends.includes(profile._id)){%>
+      <script src = "/js/requestfriend.js"></script>
+    <%}%>
   <%}%>
 <%}%>
 

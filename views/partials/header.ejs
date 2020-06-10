@@ -7,11 +7,11 @@
   </head>
   <body>
     <header class="header">
-      <h1 class='site-title'>Facespace</h1>
+      <a href="/"><h1 class='site-title'>Facespace</h1></a>
       <% if (currentUser === undefined) { %>
         <a id = "sign" href="/signin">Sign In</a> 
       <%} else {%>
-        <p id = "sign">Howdy, <%=currentUser.name%></a> 
+        <p data-user =<%=currentUser._id%> id = "sign">Howdy, <%=currentUser.name%></a> 
       <%}%>
     </header>
     <script src = "/js/header.js"></script>
