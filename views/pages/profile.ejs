@@ -11,10 +11,8 @@
       <% friends.forEach(element => { %>
       <li class="friend">
         <%console.log(element._id)%>
-        <img data-id="<%=element._id%>" src="<%=element.avatarUrl%>" alt="<%=element.name%>'s image"/>
-        <ul>
-          <li class = "mainMenu"><%=element.name%></li>
-        </ul>
+        <img src="<%=element.avatarUrl%>" alt="<%=element.name%>'s image"/>
+        <h3 class = "mainMenu" data-id="<%=element._id%>" data-user="<%=profile._id%>" ><%=element.name%></h3>
       </li>
       <% }) %>
     </ul>

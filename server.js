@@ -41,7 +41,25 @@ const handleName = (req, res) => {
 };
 
 const handleRemoveFriend = (req, res) => {
-  console.log(req.query);
+  //delete friend from user
+  users.find(
+    (element) => (element._id = req.query.userID)
+  ).friends = users
+    .find((element) => (element._id = req.query.userID))
+    .friends.filter((element) => element != req.query.friendID);
+  //delete user from friend
+  users.find(
+    (element) => (element._id = req.query.friendID)
+  ).friends = users
+    .find((element) => (element._id = req.query.friendID))
+    .friends.filter((element) => element != req.query.userID);
+
+  const profile = users.find((element) => (element._id = req.query.userID));
+  const friends = users.filter((element) =>
+    element.friends.includes(req.query.userID)
+  );
+  currentUser = profile;
+  res.status(200).redirect(`/users/${currentUser._id}`);
 };
 // -----------------------------------------------------
 // server endpoints
