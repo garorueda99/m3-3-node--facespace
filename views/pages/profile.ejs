@@ -19,6 +19,15 @@
         <h3 class = "mainMenu" data-id="<%=element._id%>" data-user="<%=profile._id%>" ><%=element.name%></h3>
       </li>
       <% }) %>
+      <% if(currentUser!= undefined){%>
+          <%console.log(users, friendToBe)%>
+          <% friendToBe.forEach(element => { %>
+            <li class="friend-to-be">
+              <img src="<%=element.avatarUrl%>" alt="<%=element.name%>'s image"/>
+              <h3 class = "mainMenu" data-id="<%=element._id%>" data-user="<%=profile._id%>" ><%=element.name%></h3>
+            </li>
+          <% }) %>
+      <%}%>
     </ul>
   </div>
 </div>

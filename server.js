@@ -3,6 +3,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const { users } = require("./data/users");
+users.forEach((element) => (element.friendToBe = []));
 
 let currentUser = undefined;
 
@@ -20,7 +21,16 @@ const profilePage = (req, res) => {
     const friends = users.filter((element) =>
       element.friends.includes(user_ID)
     );
-    res.render("pages/profile", { profile, friends, currentUser, users });
+    const friendToBe = users.filter((element) => {
+      element.friendToBe.includes(user_ID);
+    });
+    res.render("pages/profile", {
+      profile,
+      friends,
+      currentUser,
+      users,
+      friendToBe,
+    });
   } else {
     res.status(404).send("I couldn't find what you're looking for.");
   }
@@ -70,7 +80,8 @@ const handleFriendshipRequest = (req, res) => {
   "friendToBe" in friend
     ? friend.friendToBe.push(req.query.userID)
     : (friend.friendToBe = [req.query.userID]);
-  console.log(users);
+
+  res.status(200).redirect(`/users/${req.query.userID}`);
 };
 // -----------------------------------------------------
 // server endpoints
