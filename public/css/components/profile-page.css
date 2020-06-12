@@ -58,19 +58,20 @@
 
 .friend-to-be {
   margin-bottom: 0;
-  width: 100%;
+  position: relative;
 }
 
 .friend-to-be::before {
-  content: "Pending";
+  content: 'Pending';
   position: absolute;
   background-color: var(--primary-color);
   color: #fff;
   padding: 3px;
-  transform: translate(30%, -670%) rotate(45deg);
+  transform: translate(80%, 45%) rotate(45deg);
   width: 120px;
   font-size: medium;
   text-align: center;
+  z-index: 500;
 }
 
 @media screen and (min-width: 600px) {
