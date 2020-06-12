@@ -25,15 +25,12 @@
   transition: all 0.1s ease-in-out;
 }
 
-.overflow:hover {
-}
-
 .overflow:hover img {
   border: 4px solid var(--primary-color);
 }
 
 .friendframe::before {
-  content: 'Friend';
+  content: "Friend";
   position: absolute;
   background-color: var(--primary-color);
   color: #fff;

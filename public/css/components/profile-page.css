@@ -50,6 +50,29 @@
   background: rgba(255, 255, 255, 1);
 }
 
+.overflowProfile {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.friend-to-be {
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.friend-to-be::before {
+  content: "Pending";
+  position: absolute;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 3px;
+  transform: translate(30%, -670%) rotate(45deg);
+  width: 120px;
+  font-size: medium;
+  text-align: center;
+}
+
 @media screen and (min-width: 600px) {
   .profile-page__user {
     display: flex;

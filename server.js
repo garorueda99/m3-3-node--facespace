@@ -21,9 +21,9 @@ const profilePage = (req, res) => {
     const friends = users.filter((element) =>
       element.friends.includes(user_ID)
     );
-    const friendToBe = users.filter((element) => {
-      element.friendToBe.includes(user_ID);
-    });
+    const friendToBe = users.filter((element) =>
+      element.friendToBe.includes(user_ID)
+    );
     res.render("pages/profile", {
       profile,
       friends,
